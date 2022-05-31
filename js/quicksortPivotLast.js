@@ -1,6 +1,6 @@
 // Quicksort  
-// Time Complexity	O(n*log(n))	
-// Space Complexity  O(n)
+// Time Complexity	worst case O(n^2) - avg case  O(n*log(n))	
+// Space Complexity worst case O(n) - avg case O(log n)
 function quicksort(arr, start, end) {
 
     console.log(`start: ${start} end: ${end}`);
