@@ -1,3 +1,6 @@
+// Quicksort  
+// Time Complexity	O(n*log(n))	
+// Space Complexity  O(n)
 function quicksort(arr, start, end) {
 
     console.log(`start: ${start} end: ${end}`);
