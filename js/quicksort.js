@@ -1,54 +1,33 @@
-// Javascript implementation of QuickSort
+function quicksort(arr, start, end) {
 
-// A utility function to swap two elements
+    console.log(`start: ${start} end: ${end}`);
+    let i = start;
+    let j = end - 1;
+    let p = end;    //pivot index
+
+    while(i<=j) {        
+        while(arr[i]<arr[p]) i++;       
+        while(j>=start && arr[j]>=arr[p]) j--;  
+        if(i<=j) swap(arr, i, j)
+    }
+    swap(arr,i,p)
+    if(start<i-1) {
+        quicksort(arr,start,i-1);
+    }
+    if(end>i+1) {
+        quicksort(arr,i+1,end);
+    }
+}
+
 function swap(arr, i, j) {
+    console.log("swap:", arr[i], arr[j])
     let temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
+    console.log(arr)
 }
- 
-/* 
-* This function takes last element as pivot, 
-* places the pivot element at its correct position in sorted array, 
-* then places all smaller (than pivot) to left of pivot 
-* and all greater elements to right of pivot 
-*/
-function partition(arr, low, high) {
-    let pivot = arr[high];
-    // Index of smaller element and indicates the right position of pivot found so far
-    let i = (low - 1);
-    for (let j = low; j <= high - 1; j++) {
-        // If current element is smaller than the pivot
-        if (arr[j] < pivot) {
-            // Increment index of smaller element
-            i++;
-            swap(arr, i, j);
-        }
-    }
-    swap(arr, i + 1, high);
-    return (i + 1);
-}
- 
-/* QuickSort main function
-* arr[]: Array to be sorted,
-* low: Starting index,
-* high: Ending index
-*/
-function quickSort(arr, low, high) {
-    if (low < high) {
-        // pi is partitioning index, arr[p] is now at right place
-        let pi = partition(arr, low, high);
-        // Separately sort elements before partition and after partition
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
-    }
-}
- 
- 
-// Test
-let arr = [10, 7, 8, 9, 1, 5];
-let n = arr.length;
-quickSort(arr, 0, n - 1);
-console.log("Sorted array");
-console.log(arr[i] + " ");
- 
+
+let myarr = [3,7,4,2,1];
+
+console.log(`to be sorted:`, myarr);
+quicksort(myarr,0,myarr.length-1);
